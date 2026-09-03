@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverFactory {
-
     public static WebDriver getDriver(String browserName) {
         switch (browserName.toLowerCase()) {
             case "chrome":
@@ -18,10 +17,8 @@ public class WebDriverFactory {
                 return new FirefoxDriver();
             case "yandex":
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/yandexdriver.exe");
-
                 ChromeOptions options = new ChromeOptions();
                 options.setBinary("C:\\Program Files (x86)\\Yandex\\YandexBrowser\\Application\\browser.exe");
-
                 return new ChromeDriver(options);
             default:
                 throw new IllegalArgumentException("Browser not supported: " + browserName);

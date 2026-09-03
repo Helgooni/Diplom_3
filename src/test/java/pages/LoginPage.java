@@ -37,6 +37,8 @@ public class LoginPage {
         enterEmail(email);
         enterPassword(password);
         clickLoginButton();
+        wait.until(ExpectedConditions.urlContains("qa-stellarburgers.education-services.ru"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[contains(text(), 'Оформить заказ')]")));
     }
     @Step("Нажать ссылку 'Зарегистрироваться'")
     public void clickRegisterLink() {
@@ -46,11 +48,11 @@ public class LoginPage {
     public void clickForgotPasswordLink() {
         wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink)).click();
     }
-    @Step("Проверить, что кнопка Войти отображается на странице логина")
+    @Step("Проверить, что кнопка Войти отображается на странице авторизации")
     public boolean isLoginButtonDisplayed() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton)).isDisplayed();
     }
-    @Step("Проверить, что открыта страница логина")
+    @Step("Проверить, что открыта страница авторизации")
     public boolean isLoginPageDisplayed() {
         return wait.until(ExpectedConditions.urlContains("/login"));
     }

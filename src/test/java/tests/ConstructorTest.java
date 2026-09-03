@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.AfterEach;
 
 public class ConstructorTest extends BaseTest {
     private MainPage mainPage;
@@ -16,12 +17,21 @@ public class ConstructorTest extends BaseTest {
     public void init() {
         mainPage = new MainPage(driver);
     }
+
+    @AfterEach
+    @Step("Очистка после теста: закрытие браузера")
+    public void cleanUp() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
     @Test
     @DisplayName("Переход к разделу 'Булки'")
     @Description("Проверка, что раздел 'Булки' отображается")
     public void switchToBunsTest() {
         mainPage.clickSaucesTab();
         mainPage.clickBunsTab();
+
         assertEquals("Булки", mainPage.getActiveTabText(), "Раздел 'Булки' не отображается");
     }
     @Test

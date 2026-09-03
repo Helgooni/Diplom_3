@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+
 public class RegisterPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
@@ -19,7 +20,6 @@ public class RegisterPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
     @Step("Заполнить поле 'Имя'")
     public void enterName(String name) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(nameInput)).sendKeys(name);
@@ -53,7 +53,6 @@ public class RegisterPage {
     }
     @Step("Проверить, что регистрация успешна - переход на страницу входа")
     public boolean isRegistrationSuccess() {
-        // После успешной регистрации происходит редирект на страницу входа
         return wait.until(ExpectedConditions.urlContains("/login"));
     }
 }

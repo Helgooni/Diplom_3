@@ -19,38 +19,19 @@ public class ProfilePage {
     }
     @Step("Нажать кнопку 'Выход'")
     public void clickLogoutButton() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         wait.until(ExpectedConditions.elementToBeClickable(logoutButton)).click();
+        wait.until(ExpectedConditions.urlContains("/login"));
     }
     @Step("Нажать 'Конструктор'")
     public void clickConstructor() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         wait.until(ExpectedConditions.elementToBeClickable(constructorButton)).click();
     }
     @Step("Нажать на логотип")
     public void clickLogo() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         wait.until(ExpectedConditions.elementToBeClickable(logo)).click();
     }
     @Step("Проверить, что кнопка 'Выход' отображается")
     public boolean isLogoutButtonDisplayed() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
         return wait.until(ExpectedConditions.visibilityOfElementLocated(logoutButton)).isDisplayed();
     }
 }
