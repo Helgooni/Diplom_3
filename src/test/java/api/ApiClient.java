@@ -27,4 +27,11 @@ public class ApiClient {
     public String getAccessToken(Response response) {
         return response.jsonPath().getString("accessToken");
     }
+    @Step("Авторизация пользователя через API")
+    public Response loginUser(User user) {
+        return given()
+                .header("Content-Type", "application/json")
+                .body(user)
+                .post(BASE_URL + "/api/auth/login");
+    }
 }

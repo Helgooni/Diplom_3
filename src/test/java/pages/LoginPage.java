@@ -15,7 +15,7 @@ public class LoginPage {
     private final By loginButton = By.xpath(".//button[contains(text(), 'Войти')]");
     private final By registerLink = By.xpath(".//a[contains(text(), 'Зарегистрироваться')]");
     private final By forgotPasswordLink = By.xpath(".//a[contains(text(), 'Восстановить пароль')]");
-
+    private static final String BASE_URL = "qa-stellarburgers.education-services.ru";
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -37,7 +37,7 @@ public class LoginPage {
         enterEmail(email);
         enterPassword(password);
         clickLoginButton();
-        wait.until(ExpectedConditions.urlContains("qa-stellarburgers.education-services.ru"));
+        wait.until(ExpectedConditions.urlContains(BASE_URL));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[contains(text(), 'Оформить заказ')]")));
     }
     @Step("Нажать ссылку 'Зарегистрироваться'")

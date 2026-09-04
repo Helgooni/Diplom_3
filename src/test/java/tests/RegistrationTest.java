@@ -50,10 +50,13 @@ public class RegistrationTest extends BaseTest {
         loginPage.clickRegisterLink();
         registerPage.register(user.getName(), user.getEmail(), user.getPassword());
         assertTrue(registerPage.isRegistrationSuccess(), "Регистрация завершилась не успешно");
-
-        var response = apiClient.registerUser(user);
+        loginPage.login(user.getEmail(), user.getPassword());
+        var response = apiClient.loginUser(user);
         accessToken = apiClient.getAccessToken(response);
     }
+
+
+
     @Test
     @DisplayName("Ошибка при пароле меньше 6 символов")
     @Description("Проверка ошибки при пароле меньше 6 символов")
